@@ -10,14 +10,29 @@
 
   // 流式调用
 
-  const source = fetch('./pkg/wasm_demo.wasm')
+  const source = fetch('./pkg/wasm_demo_bg.wasm')
 
   WebAssembly.instantiateStreaming(source)
-    .then(({ instance }) => {
-      console.log(instance.exports.fib(3))
+    .then((obj) => {
+      console.log(obj)
+      console.log(obj.instance.exports.fib(3))
+      // console.log(obj.instance.exports.say_hello('1111'))
+      // console.log(obj.instance.exports.test('1122'))
     })
 
+    // fetch("./pkg/wasm_demo.wasm")
+    //     .then(res => res.arrayBuffer())
+    //     .then(bytes => WebAssembly.instantiate(bytes))
+    //     .then(results => {
+    //         const fib = results.instance.exports.fib;
+    //         const out = fib(20);
+    //         console.log("rust output: ", out);
+    //         console.log(results.instance.exports.say_hello())
+    //     })
+
+
 </script>
+
 <body>
 </body>
 </html>
