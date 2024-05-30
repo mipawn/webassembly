@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<script>
+
+  // 流式调用
+
+  const source = fetch('./pkg/wasm_demo.wasm')
+
+  WebAssembly.instantiateStreaming(source)
+    .then(({ instance }) => {
+      console.log(instance.exports.fib(3))
+    })
+
+</script>
+<body>
+</body>
+</html>
